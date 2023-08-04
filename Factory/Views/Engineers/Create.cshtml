@@ -10,13 +10,16 @@
 {
   @Html.LabelFor(model => model.EngineerName)
   @Html.TextBoxFor(model => model.EngineerName)
+  @Html.ValidationMessageFor(model => model.EngineerName)
 
   @Html.LabelFor(model => model.HireDate)
   @Html.TextBoxFor(model => model.HireDate)
+  @Html.ValidationMessageFor(model => model.HireDate)
 
   @Html.LabelFor(model => model.FavoriteSnack)
   @Html.TextBoxFor(model => model.FavoriteSnack)
+  @Html.ValidationMessageFor(model => model.FavoriteSnack)
 
-  <input type="submit" value="Add new engineer" class="btn btn-default" />
+  <input type="submit" value="Add new engineer" class="btn btn-primary" />
 }
 <p>@Html.ActionLink("See all engineers", "Index", "Home")</p>

@@ -33,9 +33,13 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Engineer engineer)
     {
-      _db.Engineers.Add(engineer);
-      _db.SaveChanges();
-      return RedirectToAction("Index", "Home");
+      if (ModelState.IsValid)
+      {
+        _db.Engineers.Add(engineer);
+        _db.SaveChanges();
+        return RedirectToAction("Index", "Home");
+      }
+      return View(engineer);
     }
   }
 }
