@@ -1,13 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Factory.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Factory.Controllers
 {
-    [HttpGet("/")]
-    public ActionResult Index()
+    public class HomeController : Controller
     {
-        List<Engineer> engineers = _db.Engineers.ToList();
-        List<Machine> machines = _db.Machines.ToList();
+        private readonly FactoryContext _db;
 
-        return View((engineers, machines));
+        public HomeController(FactoryContext db)
+        {
+            _db = db;
+        }
+
+        public ActionResult Index()
+        {
+            List<Engineer> engineers = _db.Engineers.ToList();
+            List<Machine> machines = _db.Machines.ToList();
+
+            ViewBag.Engineers = engineers;
+            ViewBag.Machines = machines;
+
+            return View();
+        }
     }
 }

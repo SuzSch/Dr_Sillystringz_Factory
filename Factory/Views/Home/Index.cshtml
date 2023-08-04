@@ -10,14 +10,14 @@
 
     <h1>Engineers:</h1>
 
-@if (@Model.Engineers.Count == 0)
+@if (ViewBag.Engineers.Count == 0)
 {
   <h3>No engineers have been added.</h3>
 } 
 else
 {
   <ul>
-    @foreach (Engineer engineer in Model.Engineers)
+    @foreach (Engineer engineer in ViewBag.Engineers)
     {
       <li>@Html.ActionLink($"{engineer.EngineerName}", "Details", "Engineers", new { id = engineer.EngineerId }, null)</li>
     }
@@ -27,14 +27,14 @@ else
 
 <h1>Machines:</h1>
 
-@if (@Model.Machines.Count == 0)
+@if (ViewBag.Machines.Count == 0)
 {
   <h3>No machines have been added.</h3>
 } 
 else
 {
   <ul>
-    @foreach (Machine machine in Model.Machines)
+    @foreach (Machine machine in ViewBag.Machines)
     {
       <li>@Html.ActionLink($"{machine.MachineName}", "Details", "Machines", new { id = machine.MachineId }, null)</li>
     }
