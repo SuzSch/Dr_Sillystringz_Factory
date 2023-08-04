@@ -1,23 +1,25 @@
-﻿@{
+﻿
+@{
     Layout = "_Layout";
 }
-@using Factory.Models;
+ @using Factory.Models; 
+
 
 <div class="text-center">
     <h1>Welcome to Dr. Sillystringz's Factory!</h1>
 
     <h1>Engineers:</h1>
 
-@if (@Model.Count == 0)
+@if (@Model.Engineers.Count == 0)
 {
   <h3>No engineers have been added.</h3>
 } 
 else
 {
   <ul>
-    @foreach (Engineer engineer in Model)
+    @foreach (Engineer engineer in Model.Engineers)
     {
-      <li>@Html.ActionLink($"{engineer.EngineerName}", "Details", new { id = engineer.EngineerId })</li>
+      <li>@Html.ActionLink($"{engineer.EngineerName}", "Details", "Engineers", new { id = engineer.EngineerId }, null)</li>
     }
   </ul>
 }
@@ -25,16 +27,16 @@ else
 
 <h1>Machines:</h1>
 
-@if (@Model.Count == 0)
+@if (@Model.Machines.Count == 0)
 {
   <h3>No machines have been added.</h3>
 } 
 else
 {
   <ul>
-    @foreach (Machine machine in Model)
+    @foreach (Machine machine in Model.Machines)
     {
-      <li>@Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineId })</li>
+      <li>@Html.ActionLink($"{machine.MachineName}", "Details", "Machines", new { id = machine.MachineId }, null)</li>
     }
   </ul>
 }

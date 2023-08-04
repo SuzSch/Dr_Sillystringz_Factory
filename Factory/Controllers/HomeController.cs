@@ -2,14 +2,12 @@
 
 namespace Factory.Controllers
 {
-    public class HomeController : Controller
+    [HttpGet("/")]
+    public ActionResult Index()
     {
+        List<Engineer> engineers = _db.Engineers.ToList();
+        List<Machine> machines = _db.Machines.ToList();
 
-        [HttpGet("/")]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        return View((engineers, machines));
     }
 }
