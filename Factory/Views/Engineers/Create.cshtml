@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Add a new engineer</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.EngineerName)
+  @Html.TextBoxFor(model => model.EngineerName)
+
+  @Html.LabelFor(model => model.HireDate)
+  @Html.TextBoxFor(model => model.HireDate)
+
+  @Html.LabelFor(model => model.FavoriteSnack)
+  @Html.TextBoxFor(model => model.FavoriteSnack)
+
+  <input type="submit" value="Add new engineer" class="btn btn-default" />
+}
+<p>@Html.ActionLink("See all engineers", "Index", "Home")</p>

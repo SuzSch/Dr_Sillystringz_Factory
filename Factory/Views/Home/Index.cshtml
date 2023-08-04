@@ -8,7 +8,9 @@
 <div class="text-center">
     <h1>Welcome to Dr. Sillystringz's Factory!</h1>
 
-    <h1>Engineers:</h1>
+    <hr>
+
+    <h1>List of Engineers:</h1>
 
 @if (ViewBag.Engineers.Count == 0)
 {
@@ -23,9 +25,10 @@ else
     }
   </ul>
 }
+<p>@Html.ActionLink("Add a new engineer", "Create", "Engineers")</p>
 <hr>
 
-<h1>Machines:</h1>
+<h1>List of Machines:</h1>
 
 @if (ViewBag.Machines.Count == 0)
 {
@@ -40,6 +43,8 @@ else
     }
   </ul>
 }
+<p>@Html.ActionLink("Add a new machine", "Create", "Machines")</p>
+
   </div>
 
 
