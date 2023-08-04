@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models
+@model Factory.Models.Machine
+
+<h2>Machine Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.MachineName): @Html.DisplayFor(model => model.MachineName)</h3>
+<h3>@Html.DisplayNameFor(model => model.InstallDate): @Html.DisplayFor(model => model.InstallDate)</h3>
+
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>No engineers have been certified to repair this machine yet.</p>
+}
+else
+{
+  <h4>This machine is allowed to be repaired by following engineers:</h4>
+  <ul>
+  @foreach (EngineerMachine join in Model.JoinEntities)
+    {
+      <li>Engineer: @join.Engineer.EngineerName</li>
+    }
+  </ul>
+}

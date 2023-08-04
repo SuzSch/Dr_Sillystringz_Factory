@@ -7,12 +7,14 @@
 
 <h2>Engineer Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
-<h3>@Html.DisplayNameFor(model => model.Category): @Html.DisplayFor(model => model.Category.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.EngineerName): @Html.DisplayFor(model => model.EngineerName)</h3>
+<h3>@Html.DisplayNameFor(model => model.HireDate): @Html.DisplayFor(model => model.HireDate)</h3>
+<h3>@Html.DisplayNameFor(model => model.FavoriteSnack): @Html.DisplayFor(model => model.FavoriteSnack)</h3>
+
 
 @if (@Model.JoinEntities.Count == 0)
 {
-  <p>This engineer licensed to repair any machines yet.</p>
+  <p>This engineer isn't licensed to repair any machines yet.</p>
 }
 else
 {
