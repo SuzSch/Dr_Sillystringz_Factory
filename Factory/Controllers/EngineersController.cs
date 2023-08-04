@@ -23,3 +23,5 @@ namespace Factory.Controllers
                             .ToList();
       return View(model);
     }
+  }
+}
