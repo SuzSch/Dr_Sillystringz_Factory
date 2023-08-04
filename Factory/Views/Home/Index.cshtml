@@ -1,8 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
+@using Factory.Models;
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h1>Welcome to Dr. Sillystringz's Factory!</h1>
+
+    <h1>Engineers:</h1>
+
+@if (@Model.Engineer.Count == 0)
+{
+  <h3>No engineers have been added yet!</h3>
+} 
+else
+{
+  <ul>
+    @foreach (Engineer engineer in Model)
+    {
+      <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }) | @item.Category.Name</li>
+    }
+  </ul>
+}
+
+<hr>
+
+  <h1>Machines:</h1>
+
+@if (@Model.Machine.Count == 0)
+{
+  <h3>No machines have been added yet!</h3>
+} 
+else
+{
+  <ul>
+    @foreach (Machine machine in Model.Machine)
+    {
+      <li>@Html.ActionLink($"{model.MachineName}", "Details", new { id = machine.MachineId })
+  </ul>
+  </div>
+}
+
+

@@ -1,16 +1,15 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Factory.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Factory.Controllers;
-
-public class HomeController : Controller
+namespace Factory.Controllers
 {
-    
-
-    public IActionResult Index()
+    public class HomeController : Controller
     {
-        return View();
-    }
 
+        [HttpGet("/")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+    }
 }
