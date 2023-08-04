@@ -8,17 +8,25 @@
 
 @using (Html.BeginForm())
 {
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+  <div class="form-group">
   @Html.LabelFor(model => model.EngineerName)
-  @Html.TextBoxFor(model => model.EngineerName)
-  @Html.ValidationMessageFor(model => model.EngineerName)
+  @Html.TextBoxFor(model => model.EngineerName, new { @class = "form-control" })
+  @Html.ValidationMessageFor(model => model.EngineerName, "", new { @class = "text-danger" })
+</div>
 
+  <div class="form-group">
   @Html.LabelFor(model => model.HireDate)
-  @Html.TextBoxFor(model => model.HireDate)
-  @Html.ValidationMessageFor(model => model.HireDate)
+  @Html.TextBoxFor(model => model.HireDate, new { @class = "form-control" })
+  @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+</div>
 
+  <div class="form-group">
   @Html.LabelFor(model => model.FavoriteSnack)
-  @Html.TextBoxFor(model => model.FavoriteSnack)
-  @Html.ValidationMessageFor(model => model.FavoriteSnack)
+  @Html.TextBoxFor(model => model.FavoriteSnack, new { @class = "form-control" })
+  @Html.ValidationMessageFor(model => model.FavoriteSnack, "", new { @class = "text-danger" })
+</div>
 
   <input type="submit" value="Add new engineer" class="btn btn-primary" />
 }
