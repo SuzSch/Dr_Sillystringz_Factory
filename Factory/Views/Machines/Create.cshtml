@@ -8,13 +8,20 @@
 
 @using (Html.BeginForm())
 {
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+  <div class="form-group">
   @Html.LabelFor(model => model.MachineName)
-  @Html.TextBoxFor(model => model.MachineName)
+  @Html.TextBoxFor(model => model.MachineName, new { @class = "form-control" })
+  @Html.ValidationMessageFor(model => model.MachineName, "", new { @class = "text-danger" })
+</div>
 
+  <div class="form-group">
   @Html.LabelFor(model => model.InstallDate)
-  @Html.TextBoxFor(model => model.InstallDate)
+  @Html.TextBoxFor(model => model.InstallDate, new { @class = "form-control" })
+  @Html.ValidationMessageFor(model => model.InstallDate, "", new { @class = "text-danger" })
+</div>
 
-
-  <input type="submit" value="Add a new machine " class="btn btn-default" />
+  <input type="submit" value="Add new machine" class="btn btn-primary" />
 }
 <p>@Html.ActionLink("See all machines", "Index", "Home")</p>
