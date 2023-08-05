@@ -22,9 +22,12 @@ else
   @foreach (EngineerMachine join in Model.JoinEntities)
     {
       <li>Engineer: @join.Engineer.EngineerName</li>
+      @Html.ActionLink("Delete this engineer", "DeleteEngineer", "Machines", new { joinId = join.EngineerMachineId }, new {
+  @class = "btn btn-danger btn-sm ml-2"})
     }
   </ul>
 }
-<p>@Html.ActionLink("Add a engineer who is certified to repair this machine", "AddEngineer", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Add a engineer who is certified to repair this machine", "AddEngineer", new { id = Model.MachineId
+  })</p>
 <p>@Html.ActionLink("Back to Home Page", "Index", "Home")</p>
 <p>@Html.ActionLink("Edit machine details", "Edit", new { id = Model.MachineId })</p>

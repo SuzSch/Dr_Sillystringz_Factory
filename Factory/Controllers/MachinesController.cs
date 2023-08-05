@@ -92,7 +92,7 @@ namespace Factory.Controllers
       }
       return RedirectToAction("Details", new { id = machine.MachineId });
     }
-    [HttpPost]
+    [HttpGet]
     public ActionResult DeleteEngineer(int joinId)
     {
       EngineerMachine joinEntry = _db.EngineerMachines.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
