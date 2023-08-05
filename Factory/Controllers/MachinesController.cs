@@ -52,7 +52,16 @@ namespace Factory.Controllers
     }
     public ActionResult Edit(int id)
     {
-      Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+      Machine thisMachine = _db.Machines
+                               .Include(machine => machine.JoinEntities)
+                               .FirstOrDefault(machine => machine.MachineId == id);
+
+      if (thisMachine == null)
+      {
+        return NotFound();
+      }
+
+      ViewBag.EngineerList = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
       return View(thisMachine);
     }
 
@@ -62,6 +71,26 @@ namespace Factory.Controllers
       _db.Machines.Update(machine);
       _db.SaveChanges();
       return RedirectToAction("Index", "Home");
+    }
+    public ActionResult AddEngineer(int id)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      return View(thisMachine);
+    }
+
+    [HttpPost]
+    public ActionResult AddEngineer(Machine machine, int engineerId)
+    {
+      #nullable enable
+      EngineerMachine? joinEntity = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == machine.MachineId));
+      #nullable disable
+      if (joinEntity == null && engineerId != 0)
+      {
+        _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = engineerId, MachineId = machine.MachineId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = machine.MachineId });
     }
   }
 }
