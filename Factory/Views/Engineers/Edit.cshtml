@@ -1,7 +1,7 @@
 @{
   Layout = "_Layout";
 }
-
+@using Factory.Models
 @model Factory.Models.Engineer
 
 <h2>Edit</h2>
@@ -21,10 +21,18 @@
   @Html.LabelFor(model => model.FavoriteSnack)
   @Html.EditorFor(model => model.FavoriteSnack)
 
-  @Html.LabelFor(model => model.Machine)
-  @Html.DropDownList("MachineId")
+  <h4>Machines:</h4>
+  @foreach (EngineerMachine joinEntity in Model.JoinEntities)
+  {
+    <div>
+  @Html.DisplayFor(model => joinEntity.Machine.MachineName)
+</div>
+  }
+
+  <p>Add more machines:</p>
+  @Html.DropDownList("MachineId", (SelectList)ViewBag.MachineList, "Select a machine")
+  <input type="submit" value="Add" />
 
   <input type="submit" value="Save" />
 }
-
-<p>@Html.ActionLink("Back to Home PAge", "Index", "Home")</p>
+<p>@Html.ActionLink("Back to Home Page", "Index", "Home")</p>

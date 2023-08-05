@@ -17,6 +17,6 @@ namespace Factory.Models
     public string FavoriteSnack { get; set; }
     public int MachineId { get; set; }
    
-    public List<EngineerMachine> JoinEntities { get; }
+    public List<EngineerMachine> JoinEntities { get; } 
   }
 }

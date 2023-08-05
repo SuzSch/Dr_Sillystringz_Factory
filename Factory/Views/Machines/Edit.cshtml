@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+@using Factory.Models
+@model Factory.Models.Machine
+
+<h2>Edit</h2>
+
+<h4>Edit this machines's information: @Html.DisplayFor(model => model.MachineName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.MachineId)
+
+  @Html.LabelFor(model => model.MachineName)
+  @Html.EditorFor(model => model.MachineName)
+
+  @Html.LabelFor(model => model.InstallDate)
+  @Html.EditorFor(model => model.InstallDate)
+
+
+
+  <h4>Engineers:</h4>
+  @foreach (EngineerMachine joinEntity in Model.JoinEntities)
+  {
+    <div>
+  @Html.DisplayFor(model => joinEntity.Engineer.EngineerName)
+</div>
+  }
+
+  <p>Add more engineers:</p>
+  @Html.DropDownList("EngineerId", (SelectList)ViewBag.EngineerList, "Select an engineer")
+  <input type="submit" value="Add" />
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to Home Page", "Index", "Home")</p>
