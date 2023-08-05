@@ -25,5 +25,6 @@ else
     }
   </ul>
 }
+<p>@Html.ActionLink("Add a engineer who is certified to repair this machine", "AddEngineer", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Back to Home Page", "Index", "Home")</p>
-<p>@Html.ActionLink("Edit machine or engineers that are licensed to repair them ", "Edit", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Edit machine details", "Edit", new { id = Model.MachineId })</p>
