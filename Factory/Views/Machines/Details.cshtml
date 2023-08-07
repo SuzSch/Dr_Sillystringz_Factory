@@ -22,7 +22,7 @@ else
   @foreach (EngineerMachine join in Model.JoinEntities)
     {
       <li>Engineer: @join.Engineer.EngineerName</li>
-      @Html.ActionLink("Delete this engineer", "DeleteEngineer", "Machines", new { joinId = join.EngineerMachineId }, new {
+      @Html.ActionLink("Remove engineer from this machine", "DeleteEngineer", "Machines", new { joinId = join.EngineerMachineId }, new {
   @class = "btn btn-danger btn-sm ml-2"})
     }
   </ul>

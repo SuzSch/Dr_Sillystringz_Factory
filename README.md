@@ -41,28 +41,34 @@
   }
 }
 ``````
-8. Run the following command in your terminal to install a tool called dotnet-ef globally to create migrations and update our database:
+8. Open MySQL and In the Navigator > Administration window, select Data Import/Restore.
+9. In Import Options select Import from Self-Contained File.
+10. Navigate to the cloned repo.
+11. Choose the 8_6_23_dump.sql file and click open.
+12. Select Dump Structure Only and then navigate to the tab called Import Progress and click Start Import at the bottom right corner of the window.
+13. After you are finished with the above steps, reopen the Navigator > Schemas tab. Right click and select Refresh All. 
+14. Run the following command in your terminal to install a tool called dotnet-ef globally to create migrations and update our database:
 ``````
 $ dotnet tool install --global dotnet-ef --version 6.0.0
 ``````
-9. Within the production directory "Factory", run the following command:
+15. Within the production directory "Factory", run the following command:
 ``````
 $ dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0
 ``````
-10. To create a new migration and update your database run the following command (within the "Factory" directory):
+16. To create a new migration and update your database run the following command (within the "Factory" directory):
 ``````
 $ dotnet ef migrations add Initial
 ``````
 When we run the above command, a new migration will be created with the name Initial in a new folder called Migrations. If this is the first migration in a project, EF Core will automatically generate a Migrations folder in the root directory. Note that we can name our migration anything we want, but it's common for the first migration to contain the word Initial or something like it.
 
-11. When naming subsequent migrations, start with a verb to describe the change that the migration will make to the database.
+17. When naming subsequent migrations, start with a verb to describe the change that the migration will make to the database.
 
-12. Once we have verified that the migration looks correct and made any necessary changes, we'll run the following command to update our database:
+18. Once we have verified that the migration looks correct and made any necessary changes, we'll run the following command to update our database:
 ``````
 $ dotnet ef database update
 ``````
 
-13. Within the production directory "Factory", run dotnet watch run in the command line to start the project in development mode with a watcher.
+19. Within the production directory "Factory", run dotnet watch run in the command line to start the project in development mode with a watcher.
 
 ## Known Bugs
 Each time the project is opened, it generates a "Factory.sln file. This needs to be deleted, otherwise when you try to run the program you get an error that says "This folder contains more than one project or solution file." Not sure how to fix it but I'm guessing it has something to do with using dotnet new mvc.
